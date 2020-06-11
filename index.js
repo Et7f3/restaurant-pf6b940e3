@@ -5,6 +5,15 @@ const layout = require("./utils/layout.js")
 
 const bodyParser = require('body-parser')
 
+const session = require('express-session');
+
+app.use(session({
+  store: new (require('connect-pg-simple')(session))(),
+  secret: process.env.FOO_COOKIE_SECRET,
+  resave: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+}));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
