@@ -3,7 +3,7 @@ const db = require("../../utils/db.js")
 
 module.exports = exports = function(req, res) {
     if (req.body.login && req.body.pass) {
-        var args = [req.body.len, req.body.pass];
+        var args = [req.body.login, req.body.pass];
         db.query("SELECT COUNT(*) FROM restaurateurs WHERE login = $1::text", [args[0]], (err, resul) => {
             console.error(err)
             console.info("my debug: ", resul)
