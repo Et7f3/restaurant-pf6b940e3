@@ -30,6 +30,8 @@ app.get("/resto/login", require("./routes/resto/index.js"))
 app.post("/admin/signin", require("./routes/admin/signin.js"))
 app.get("/admin/signin", require("./routes/admin/signin.js"))
 
+app.get("/admin/list", require("./routes/admin/list.js"))
+
 app.get("/", require("./routes/resto/index.js"))
 
 app.get("/resto/commande", require("./routes/resto/commande.js"))

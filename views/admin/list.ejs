@@ -1,0 +1,20 @@
+<% if (rows) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th><th>login</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let row in rows) { %>
+                <tr>
+                    <td><% row.id %></td>
+                    <td><%= row.login %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+<% } else { %>
+<p> Aucun restaurateurs inscrits.</p>
+<% } %>
+<a href="/admin/signin">Retour</a>
