@@ -9,6 +9,8 @@ module.exports = exports = function(req, res) {
         db.query("SELECT * FROM clients WHERE tel=$1", [req.body.tel], (err, resul) => {
             console.error(err)
             // TODO: handle err
+            res.setHeader('Content-Type', 'application/json');
+            res.writeHead(200)
             res.end(JSON.stringify(resul))
         })
     }
