@@ -5,6 +5,7 @@ module.exports = exports = function(req, res) {
     var data
     if (req.body.tel && req.body.nom && req.body.prix && req.body.adresse) {
         function f(resul) {
+            console.log(resul)
             db.query("INSERT INTO commandes (id_client, prix) VALUES ($1, $2)", [resul.rows[0].id, req.body.prix], err => {
                 console.error(err)
                 // TODO: handle err
