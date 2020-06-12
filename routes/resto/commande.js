@@ -20,13 +20,17 @@ module.exports = exports = function(req, res) {
             console.error(err)
             // TODO: handle err
             if (resul.rows.length > 0 && (resul.rows[0].nom != req.body.nom || resul.rows[0].adresse != req.body.adresse))
-                db.query("UPDATE clients SET nom=$1 AND adresse=$2 WHERE tel=$3 RETURNING id", [req.body.nom, req.body.adresse, req.body.tel], (err, new_resul) => {
+                db.query("UPDATE clients SET nom=$1 AND adresse=$2 WHERE tel=$3 RETURNING id", [req.body.nom, req.body.adresse, req.body.tel], (err, resul) => {
                     console.error(err)
                     // TODO: handle err
-                    f(new_resul)
+                    f(resul)
                 })
             else
-                f(resul)
+                db.query("INSERT INTO clients (nom, adresse, tel) VALUE ($1, $2, $3) RETURNING id", [req.body.nom, req.body.adresse, req.body.tel], (err, resul) => {
+                    console.error(err)
+                    // TODO: handle err
+                    f(resul)
+                })
         })
     } else {
         data = {
