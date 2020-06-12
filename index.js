@@ -34,7 +34,7 @@ app.get("/admin/list", require("./routes/admin/list.js"))
 app.get("/admin/list_users", require("./routes/admin/list_users.js"))
 app.get("/admin/list_commandes", require("./routes/admin/list_commandes.js"))
 
-app.get("/api/get_coords", require("./routes/api/get_coords.js"))
+app.post("/api/get_coords", require("./routes/api/get_coords.js"))
 
 app.get("/", require("./routes/resto/index.js"))
 
