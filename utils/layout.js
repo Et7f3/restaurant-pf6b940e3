@@ -5,7 +5,7 @@ module.exports = exports = function(data, req, res) {
         if (err) {
             console.error(err)
         }
-        res.writeHead(500)
+        //res.writeHead(500)
         res.end(str)
     })
 }
