@@ -4,18 +4,24 @@ const db = require("../../utils/db.js")
 module.exports = exports = function(req, res) {
     var data
     if (req.body.tel && req.body.nom && req.body.prix && req.body.adresse) {
+        data = {
+            tel: "",
+            nom: "",
+            prix: "",
+            adresse: "",
+        }
         db.query("SELECT * FROM clients WHERE tel=$1", [req.body.tel], (err, resul) => {
             console.error(err)
             // TODO: handle err
             if (resul.rows[0].nom != req.body.nom || resul.rows[0].adresse != req.body.adresse)
-                await db.query("UPDATE clients SET nom=$1 AND adresse=$2 WHERE tel=$3", [req.body.nom, req.body.adresse, req.body.tel])
-            await db.query("INSERT INTO commandes (id_client, prix) VALUES ($1, $2)", [resul.rows[0].id, req.body.prix])
-            data = {
-                tel: "",
-                nom: "",
-                prix: "",
-                adresse: "",
-            }
+                db.query("UPDATE clients SET nom=$1 AND adresse=$2 WHERE tel=$3", [req.body.nom, req.body.adresse, req.body.tel], (err) => {
+                    console.error(err)
+                    // TODO: handle err
+                })
+            db.query("INSERT INTO commandes (id_client, prix) VALUES ($1, $2)", [resul.rows[0].id, req.body.prix], err => {
+                console.error(err)
+                // TODO: handle err
+            })
         })
     } else {
         data = {
