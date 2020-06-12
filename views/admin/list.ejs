@@ -8,17 +8,13 @@
         <tbody>
             <% for (let row of rows) { %>
                 <tr>
-                    <!--<%- print(row) %>-->
-                    <!--<%- print(row.id) %>-->
-                    <td><%- print(row.id) %></td>
-                    <td><%= print(row.login) %></td>
+                    <td><%- row.id %></td>
+                    <td><%= row.login %></td>
                 </tr>
             <% } %>
         </tbody>
     </table>
-<pre><%- print(rows) %></pre>
 <% } else { %>
-    <pre><%- console.log(rows) %></pre>
     <p> Aucun restaurateurs inscrits.</p>
 <% } %>
 <a href="/admin/signin">Retour</a>
