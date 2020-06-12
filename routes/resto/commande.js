@@ -16,11 +16,11 @@ module.exports = exports = function(req, res) {
             prix: "",
             adresse: "",
         }
-        db.query("SELECT * FROM clients WHERE tel=$1", [req.body.tel], (err, resul) => {
+        db.query("SELECT * FROM clients WHERE tel=$1 RETURNING id", [req.body.tel], (err, resul) => {
             console.error(err)
             // TODO: handle err
             if (resul.rows.length > 0 && (resul.rows[0].nom != req.body.nom || resul.rows[0].adresse != req.body.adresse))
-                db.query("UPDATE clients SET nom=$1 AND adresse=$2 WHERE tel=$3", [req.body.nom, req.body.adresse, req.body.tel], (err, new_resul) => {
+                db.query("UPDATE clients SET nom=$1 AND adresse=$2 WHERE tel=$3 RETURNING id", [req.body.nom, req.body.adresse, req.body.tel], (err, new_resul) => {
                     console.error(err)
                     // TODO: handle err
                     f(new_resul)
