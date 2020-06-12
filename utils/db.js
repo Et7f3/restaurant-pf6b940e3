@@ -9,4 +9,4 @@ const client = new Client({
 
 client.connect();
 
-exports = client
+modules.exports = exports = client
