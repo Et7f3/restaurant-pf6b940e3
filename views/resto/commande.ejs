@@ -5,3 +5,28 @@
     <label for="prix">Prix:</prix><input name="prix" value="<%- prix %>"/>
     <input type="submit">
 </form>
+<script>
+{
+    var tel = document.querySelector("input[name=tel]")
+    var nom = document.querySelector("input[name=nom]")
+    var adresse = document.querySelector("input[name=adresse]")
+    var xhttp = new XMLHttpRequest();
+    xhttp.addEventListener("readystatechange", function(e) {
+        if (this.readyState == 4 && this.status == 200) {
+            var obj = JSON.parse(this.responseText)
+            if ("reason" in obj)
+                console.info(this.responseText, obj)
+            else {
+                nom.value = obj.nom
+                adresse.value = obj.adresse
+            }
+        }
+    })
+    tel.addEventListener("keyup", function(e) {
+        xhttp.abort()
+        xhttp.open("POST", "/api/get_coords", true)
+        xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhttp.send("tel=" + encodeURIComponent(e.target.value))
+    })
+}
+</script>
