@@ -1,6 +1,6 @@
 CREATE TABLE "clients" (
 	"id" serial,
-	"tel" char(20) NOT NULL,
+	"tel" varchar(20) NOT NULL,
 	"nom" text NOT NULL,
 	"adresse" text NOT NULL
 );
