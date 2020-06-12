@@ -4,18 +4,12 @@ const db = require("../../utils/db.js")
 module.exports = exports = function(req, res) {
     if (req.body.login && req.body.pass) {
         var args = [req.body.login, req.body.pass];
-        db.query("SELECT COUNT(*) FROM restaurateurs WHERE login = $1::text", [args[0]], (err, resul) => {
-            console.error(err)
-            console.info("my debug: ", resul)
-        })
         db.query("SELECT * FROM restaurateurs WHERE login = $1::text", [args[0]], (err, resul) => {
             console.error(err)
-            console.info(resul)
             // TODO: handle err
             if (resul.rows.length == 0)
                 db.query("INSERT INTO restaurateurs (login, pass) VALUES ($1, $2)", args, (err, resul) => {
                     console.error(err)
-                    console.info(resul)
                     // TODO: handle err
                     res.writeHead(303, {
                         'Location': '/admin/list'
