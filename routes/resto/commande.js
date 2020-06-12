@@ -27,7 +27,7 @@ module.exports = exports = function(req, res) {
                     f(resul)
                 })
             else
-                db.query("INSERT INTO clients (nom, adresse, tel) VALUE ($1, $2, $3) RETURNING id", [req.body.nom, req.body.adresse, req.body.tel], (err, resul) => {
+                db.query("INSERT INTO clients (nom, adresse, tel) VALUES ($1, $2, $3) RETURNING id", [req.body.nom, req.body.adresse, req.body.tel], (err, resul) => {
                     console.error(err)
                     // TODO: handle err
                     f(resul)
