@@ -8,7 +8,9 @@
         <tbody>
             <% for (let row in rows) { %>
                 <tr>
-                    <td><% row.id %></td>
+                    <!--<%- print(row) %></pre>-->
+                    <!--<%- print(row.id) %></pre>-->
+                    <td><%- row.id %></td>
                     <td><%= row.login %></td>
                 </tr>
             <% } %>
