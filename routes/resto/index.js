@@ -7,7 +7,7 @@ module.exports = exports = function(req, res) {
         db.query("SELECT id, login FROM restaurateurs WHERE login=$1 AND pass=$2", args, (err, resul) => {
             console.error(err)
             // TODO: handle err
-            if (resul.rows.lenth == 1)
+            if (resul.rows.length == 1)
             {
                 res.writeHead(303, {
                     'Location': '/resto/commande'
