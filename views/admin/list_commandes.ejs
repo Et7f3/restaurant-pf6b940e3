@@ -1,0 +1,19 @@
+<% if (rows.length != 0) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>nom</th><th>tel</th><th>prix</th><th>adresse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let row of rows) { %>
+                <tr>
+                    <td><%- row.nom %></td>
+                    <td><%= row.tel %></td>
+                    <td><%= row.prix %></td>
+                    <td><%= row.adresse %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+<% } %>
