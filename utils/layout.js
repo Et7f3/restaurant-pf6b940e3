@@ -1,7 +1,7 @@
 const ejs = require("ejs")
 
 module.exports = exports = function(data, req, res) {
-    ejs.renderFile("views/layout.ejs", data, {"outputFunctionName":"print"}, function(err, str) {
+    ejs.renderFile("views/layout.ejs", data, {}, function(err, str) {
         if (err) {
             console.error(err)
         }
