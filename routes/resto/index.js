@@ -1,4 +1,5 @@
 const layout = require("../../utils/layout.js")
+const db = require("../../utils/db.js")
 
 module.exports = exports = function(req, res) {
     if (req.body.login && req.body.pass) {
