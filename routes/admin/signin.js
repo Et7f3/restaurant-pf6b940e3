@@ -6,12 +6,12 @@ module.exports = exports = function(req, res) {
         var args = [req.body.len, req.body.pass];
         db.query("SELECT * FROM restaurateurs WHERE login = $1::text", [args[0]], (err, resul) => {
             console.error(err)
-            console.info(result)
+            console.info(resul)
             // TODO: handle err
             if (resul.length == 0)
                 db.query("INSERT INTO restaurateurs (login, pass) VALUES ($1, $2)", args, (err, resul) => {
                     console.error(err)
-                    console.info(result)
+                    console.info(resul)
                     // TODO: handle err
                     res.writeHead(303, {
                         'Location': '/admin/list'
