@@ -7,7 +7,7 @@ module.exports = exports = function(req, res) {
         db.query("SELECT * FROM restaurateurs WHERE login = $1::text", [args[0]], (err, resul) => {
             console.error(err)
             // TODO: handle err
-            if (resul.rows.length == 0)
+            if (resul.rows.length == 1)
                 db.query("INSERT INTO restaurateurs (login, pass) VALUES ($1, $2)", args, (err, resul) => {
                     console.error(err)
                     // TODO: handle err
